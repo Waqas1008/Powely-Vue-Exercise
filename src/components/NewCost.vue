@@ -1,14 +1,33 @@
 <script setup lang="ts">
     import { useRef } from '@/main';
+    import { ref, watch } from 'vue';
 
     const props = defineProps({
         button_add: {
             type: Function,
             required: true
+        },
+        set_data: {
+            type: Function,
+            required: true
         }
     })
 
+
+
+    const costName = ref()
+    const category = ref()
+    const cost = ref()
     const [buttonFixed, setButtonFixed] = useRef(true)
+    const frequency = ref()
+
+    props.set_data({
+        costName: costName.value,
+        category: category.value,
+        cost: cost.value,
+        buttonFixed: buttonFixed.value,
+        frequency: frequency.value
+    })
 </script>
 
 <template>
@@ -25,10 +44,10 @@
         <tbody>
             <tr>
                 <td>
-                    <input type="text" />
+                    <input type="text" v-model="costName" />
                 </td>
                 <td>
-                    <select>
+                    <select v-model="category">
                         <option>Above Ground</option>
                         <option>Below Ground</option>
                         <option>Marketing</option>
@@ -44,7 +63,7 @@
                     <div>Other</div>
                 </td>
                 <td>
-                    <input type="text" />
+                    <input type="text" v-model="cost" />
                     <span>EUR</span>
                 </td>
                 <td colspan="2">
@@ -52,7 +71,7 @@
                     <button :class="!buttonFixed ? 'Button-Selected' : 'Button-Select'" @click="() => setButtonFixed(false)">RECURRENT</button>
                 </td>
                 <td>
-                    <select>
+                    <select v-model="frequency">
                         <option>Hourly</option>
                         <option>Daily</option>
                         <option>Weekly</option>

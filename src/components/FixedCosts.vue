@@ -3,8 +3,14 @@
         button_remove: {
             type: Function,
             required: true
+        },
+        data: {
+            type: Object,
+            required: true
         }
     })
+
+    console.log(props.data)
 </script>
 
 <template>
@@ -20,7 +26,7 @@
         <tbody>
             <tr>
                 <td>
-                    BUILDING
+                    {{ props.data.costName }}
                 </td>
                 <td>
                     <select>
