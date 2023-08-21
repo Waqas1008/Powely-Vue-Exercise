@@ -14,6 +14,14 @@
         set_data_recurring: {
             type: Function,
             required: true
+        },
+        show_fixed: {
+            type: Boolean,
+            required: true
+        },
+        show_recurring: {
+            type: Boolean,
+            required: true
         }
     })
 
@@ -104,7 +112,7 @@
                     <div>Annualy</div>
                 </td>
                 <td>
-                    <button class="Button-Add" @click="() => setData(buttonFixed)">ADD</button>
+                    <button class="Button-Add" @click="() => setData(buttonFixed)">{{ (show_fixed || show_recurring) ? 'EDIT' : "ADD" }}</button>
                 </td>
             </tr>
             <tr>

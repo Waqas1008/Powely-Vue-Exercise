@@ -35,10 +35,10 @@
         <h2>
             OTHER CAPEX AND OPEX COSTS
         </h2>
-        <NewCost :button_add="button_add" :set_data_fixed="setDataFixed" :set_data_recurring="setDataRecurring" />
+        <NewCost :button_add="button_add" :set_data_fixed="setDataFixed" :set_data_recurring="setDataRecurring" :show_fixed="showFixedCost" :show_recurring="showRecurringCost" />
         <FixedCosts v-if="showFixedCost" :button_remove="() => setShowFixedCost(false)" :data="dataFixed" />
         <RecurrentCosts v-if="showRecurringCost" :button_remove="() => setShowRecurringCost(false)" :data="dataRecurring" />
-        <button v-if="dataFixed || dataRecurring" class="Button-Save" @click="postData">Save</button>
+        <button v-if="showFixedCost || showRecurringCost" class="Button-Save" @click="postData">Save</button>
     </main>
 </template>
 
