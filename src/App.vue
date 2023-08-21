@@ -4,7 +4,7 @@
     import RecurrentCosts from './components/RecurrentCosts.vue'
     import NewCost from './components/NewCost.vue';
     import { useRef } from './main';
-    import { watch } from 'vue';
+    import Axios from 'axios'
 
     const [data, setData] = useRef()
     const [showFixedCost, setShowFixedCost] = useRef(false)
@@ -15,9 +15,13 @@
         !button_is_fixed && setShowRecurringCost(true)
     }
 
-    watch(data, () => {
-        console.log(data.value)
-    })
+    const postData = () => {
+        console.log("postData")
+
+        Axios.post('https://jsonplaceholder.typicode.com/posts', {
+            body: data.value
+        })
+    }
 
 </script>
 
@@ -30,6 +34,7 @@
         <NewCost :button_add="button_add" :set_data="setData" />
         <FixedCosts v-if="showFixedCost" :button_remove="() => setShowFixedCost(false)" :data="data" />
         <RecurrentCosts v-if="showRecurringCost" :button_remove="() => setShowRecurringCost(false)" :data="data" />
+        <button v-if="data" class="Button-Save" @click="postData">Save</button>
     </main>
 </template>
 
