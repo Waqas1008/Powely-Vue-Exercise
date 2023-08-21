@@ -5,8 +5,10 @@
     import NewCost from './components/NewCost.vue';
     import { useRef } from './main';
     import Axios from 'axios'
+    import { watch } from 'vue';
 
-    const [data, setData] = useRef()
+    const [dataFixed, setDataFixed] = useRef()
+    const [dataRecurring, setDataRecurring] = useRef()
     const [showFixedCost, setShowFixedCost] = useRef(false)
     const [showRecurringCost, setShowRecurringCost] = useRef(false)
 
@@ -19,10 +21,12 @@
         console.log("postData")
 
         Axios.post('https://jsonplaceholder.typicode.com/posts', {
-            body: data.value
+            body: {
+                fixed_cost: dataFixed,
+                recurring_cost: dataRecurring
+            }
         })
     }
-
 </script>
 
 <template>
@@ -31,10 +35,10 @@
         <h2>
             OTHER CAPEX AND OPEX COSTS
         </h2>
-        <NewCost :button_add="button_add" :set_data="setData" />
-        <FixedCosts v-if="showFixedCost" :button_remove="() => setShowFixedCost(false)" :data="data" />
-        <RecurrentCosts v-if="showRecurringCost" :button_remove="() => setShowRecurringCost(false)" :data="data" />
-        <button v-if="data" class="Button-Save" @click="postData">Save</button>
+        <NewCost :button_add="button_add" :set_data_fixed="setDataFixed" :set_data_recurring="setDataRecurring" />
+        <FixedCosts v-if="showFixedCost" :button_remove="() => setShowFixedCost(false)" :data="dataFixed" />
+        <RecurrentCosts v-if="showRecurringCost" :button_remove="() => setShowRecurringCost(false)" :data="dataRecurring" />
+        <button v-if="dataFixed || dataRecurring" class="Button-Save" @click="postData">Save</button>
     </main>
 </template>
 

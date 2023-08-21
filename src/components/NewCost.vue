@@ -1,13 +1,17 @@
 <script setup lang="ts">
     import { useRef } from '@/main';
-    import { ref, watch } from 'vue';
+    import { ref } from 'vue';
 
     const props = defineProps({
         button_add: {
             type: Function,
             required: true
         },
-        set_data: {
+        set_data_fixed: {
+            type: Function,
+            required: true
+        },
+        set_data_recurring: {
             type: Function,
             required: true
         }
@@ -20,13 +24,25 @@
     const frequency = ref("Annualy")
 
     const setData = (button_fixed: boolean) => {
-        props.set_data({
-            costName: costName.value,
-            category: category.value,
-            cost: cost.value,
-            buttonFixed: buttonFixed.value,
-            frequency: frequency.value
-        })
+        if (buttonFixed.value) {
+            props.set_data_fixed({
+                costName: costName.value,
+                category: category.value,
+                cost: cost.value,
+                buttonFixed: buttonFixed.value,
+                frequency: frequency.value
+            })
+        }
+        else {
+            props.set_data_recurring({
+                costName: costName.value,
+                category: category.value,
+                cost: cost.value,
+                buttonFixed: buttonFixed.value,
+                frequency: frequency.value
+            })
+        }
+
         props.button_add(button_fixed)
     }
 </script>
