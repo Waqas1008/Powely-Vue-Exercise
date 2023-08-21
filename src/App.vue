@@ -4,6 +4,7 @@
     import RecurrentCosts from './components/RecurrentCosts.vue'
     import NewCost from './components/NewCost.vue';
     import { useRef } from './main';
+    import { watch } from 'vue';
 
     const [data, setData] = useRef()
     const [showFixedCost, setShowFixedCost] = useRef(false)
@@ -13,6 +14,10 @@
         button_is_fixed && setShowFixedCost(true)
         !button_is_fixed && setShowRecurringCost(true)
     }
+
+    watch(data, () => {
+        console.log(data.value)
+    })
 
 </script>
 

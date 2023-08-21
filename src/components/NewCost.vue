@@ -13,21 +13,24 @@
         }
     })
 
-
-
     const costName = ref()
     const category = ref()
     const cost = ref()
     const [buttonFixed, setButtonFixed] = useRef(true)
     const frequency = ref()
 
-    props.set_data({
-        costName: costName.value,
-        category: category.value,
-        cost: cost.value,
-        buttonFixed: buttonFixed.value,
-        frequency: frequency.value
-    })
+    const setData = (button_fixed: boolean) => {
+        props.set_data({
+            costName: costName.value,
+            category: category.value,
+            cost: cost.value,
+            buttonFixed: buttonFixed.value,
+            frequency: frequency.value
+        })
+        props.button_add(button_fixed)
+    }
+
+
 </script>
 
 <template>
@@ -87,7 +90,7 @@
                     <div>Annualy</div>
                 </td>
                 <td>
-                    <button class="Button-Add" @click="() => props.button_add(buttonFixed)">ADD</button>
+                    <button class="Button-Add" @click="() => setData(buttonFixed)">ADD</button>
                 </td>
             </tr>
             <tr>
