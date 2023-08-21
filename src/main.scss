@@ -6,6 +6,7 @@
 
 body {
     font-family: sans-serif;
+    font-size: 14px;
 }
 
 html,
@@ -19,4 +20,49 @@ body,
 
 a {
     color: inherit;
+}
+
+select,
+input[type=text],
+textarea {
+    padding: 10px;
+    border: none;
+    width: 100%;
+    font-size: inherit;
+    font-family: inherit;
+    resize: none;
+}
+
+button {
+    padding: 5px 30px;
+    border: none;
+
+    color: grey;
+    cursor: pointer;
+
+    &:hover {
+        color: white;
+    }
+}
+
+.Button-Remove {
+    background: #FF5560;
+}
+
+.Button-Add {
+    background: gold;
+}
+
+.Button-Selected {
+    background: lime;
+    border-radius: 20px;
+}
+
+.Button-Select {
+    background: white;
+    border-radius: 20px;
+
+    &:hover {
+        color: black;
+    }
 }
