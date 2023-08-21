@@ -14,10 +14,10 @@
     })
 
     const costName = ref()
-    const category = ref()
+    const category = ref("Above Ground")
     const cost = ref()
     const [buttonFixed, setButtonFixed] = useRef(true)
-    const frequency = ref()
+    const frequency = ref("Annualy")
 
     const setData = (button_fixed: boolean) => {
         props.set_data({
@@ -29,8 +29,6 @@
         })
         props.button_add(button_fixed)
     }
-
-
 </script>
 
 <template>

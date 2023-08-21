@@ -29,19 +29,27 @@
                     {{ props.data.costName }}
                 </td>
                 <td>
-                    <select>
+                    <select :value="props.data.category">
                         <option>Above Ground</option>
                         <option>Below Ground</option>
+                        <option>Marketing</option>
+                        <option>People</option>
+                        <option>Operations</option>
+                        <option>Other</option>
                     </select>
                 </td>
                 <td>
-                    <input type="text" />
+                    <input type="text" :value="props.data.cost" />
                     <span>EUR</span>
                 </td>
                 <td colspan="2">
-                    <select>
-                        <option>After FID</option>
-                        <option>Before FID</option>
+                    <select :value="props.data.frequency">
+                        <option>Hourly</option>
+                        <option>Daily</option>
+                        <option>Weekly</option>
+                        <option>Monthly</option>
+                        <option>Quarerly</option>
+                        <option>Annualy</option>
                     </select>
                 </td>
                 <td>

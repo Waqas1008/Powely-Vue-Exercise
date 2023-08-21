@@ -29,7 +29,7 @@
         </h2>
         <NewCost :button_add="button_add" :set_data="setData" />
         <FixedCosts v-if="showFixedCost" :button_remove="() => setShowFixedCost(false)" :data="data" />
-        <RecurrentCosts v-if="showRecurringCost" :button_remove="() => setShowRecurringCost(false)" />
+        <RecurrentCosts v-if="showRecurringCost" :button_remove="() => setShowRecurringCost(false)" :data="data" />
     </main>
 </template>
 

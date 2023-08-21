@@ -3,6 +3,10 @@
         button_remove: {
             type: Function,
             required: true
+        },
+        data: {
+            type: Object,
+            required: true
         }
     })
 </script>
@@ -21,16 +25,20 @@
         <tbody>
             <tr>
                 <td>
-                    HR & PERSONNEL
+                    {{ props.data.costName }}
                 </td>
                 <td>
-                    <select>
+                    <select :value="props.data.category">
+                        <option>Above Ground</option>
+                        <option>Below Ground</option>
+                        <option>Marketing</option>
                         <option>People</option>
-                        <option>Test</option>
+                        <option>Operations</option>
+                        <option>Other</option>
                     </select>
                 </td>
                 <td>
-                    <input type="text" />
+                    <input type="text" :value="props.data.cost" />
                     <span>EUR</span>
                 </td>
                 <td colspan="2">
@@ -40,9 +48,13 @@
                     </select>
                 </td>
                 <td>
-                    <select>
-                        <option>Annualy</option>
+                    <select :value="props.data.frequency">
+                        <option>Hourly</option>
+                        <option>Daily</option>
+                        <option>Weekly</option>
                         <option>Monthly</option>
+                        <option>Quarerly</option>
+                        <option>Annualy</option>
                     </select>
                 </td>
                 <td>
